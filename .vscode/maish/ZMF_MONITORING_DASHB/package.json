@@ -1,0 +1,20 @@
+{
+  "name": "ZMF_MONITORING_DASHB",
+  "version": "0.0.1",
+  "description": "",
+  "devDependencies": {
+    "@ui5/cli": "1.13.0",
+    "@sap/ui5-builder-webide-extension": "1.0.x",
+    "sonarqube-scanner": "^2.5.0"
+  },
+  "scripts": {
+    "build": "ui5 build --clean-dest --include-task=generateManifestBundle generateCachebusterInfo",
+    "sonar-scanner": "sonar-scanner"
+  },
+  "ui5": {
+    "dependencies": [
+      "@sap/ui5-builder-webide-extension"
+    ]
+  },
+  "private": "true"
+}

@@ -1,0 +1,73 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="moni.ZMF_MONITORING_DASHB.controller.update_view" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Update Error Details" showNavButton="true" navButtonPress="goBack">
+				<content>
+					<Table noDataText="No Data Found" alternateRowColors="true"
+						items="{ path: 'WoModelUpdt>/results', sorter: { path: 'Vbmandt', aescending: true, group: true } }" id="table0" width="auto"
+						class="sapUiResponsiveMargin" growing="true">
+						<headerToolbar>
+							<OverflowToolbar>
+								<Title text="Update Error" level="H2"/>
+								<ToolbarSpacer/>
+								<SearchField liveChange="onSearch" width="30%"/>
+								<Button icon="sap-icon://excel-attachment" tooltip="Excel Attachment" press="onDataExport"/>
+							</OverflowToolbar>
+						</headerToolbar>
+						<items>
+							<ColumnListItem type="Active" id="item0">
+								<cells>
+									<Text text="{WoModelUpdt>Vbmandt}" id="text0"/>
+									<Text text="{ path: 'WoModelUpdt>Zdate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" id="text1"/>
+									<Text text="{WoModelUpdt>Vbusr}" id="text2"/>
+									<Text text="{ path: 'WoModelUpdt>Ztime', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }}" id="text3"/>
+									<Text text="{WoModelUpdt>Vbreport}" id="text4"/>
+									<Text text="{WoModelUpdt>Vbtcode}" id="text5"/>
+									<Text text="{WoModelUpdt>Zstatus}" id="text6"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column id="column0">
+								<header>
+									<Label text="Client" id="label0"/>
+								</header>
+							</Column>
+							<Column id="column5">
+								<header>
+									<Label text="Date" id="label5"/>
+								</header>
+							</Column>
+							<Column id="column1">
+								<header>
+									<Label text="User" id="label1"/>
+								</header>
+							</Column>
+							<Column id="column6">
+								<header>
+									<Label text="Time" id="label6"/>
+								</header>
+							</Column>
+							<Column id="column2">
+								<header>
+									<Label text="Program" id="label2"/>
+								</header>
+							</Column>
+							<Column id="column3">
+								<header>
+									<Label text="T code" id="label3"/>
+								</header>
+							</Column>
+							<Column id="column4">
+								<header>
+									<Label text="Status" id="label4"/>
+								</header>
+							</Column>
+						</columns>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

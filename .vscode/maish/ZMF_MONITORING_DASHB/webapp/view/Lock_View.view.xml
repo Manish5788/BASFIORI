@@ -1,0 +1,78 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="moni.ZMF_MONITORING_DASHB.controller.Lock_View"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Lock Object Details" showNavButton="true" navButtonPress="goBack">
+				<content>
+					<Table noDataText="No Data Found" width="auto" class="sapUiResponsiveMargin" growing="true"
+						alternateRowColors="true" items="{ path: 'WoModelLock>/results', sorter: { path: 'Gclient', aescending: true, group: true } }" id="table0">
+						<headerToolbar>
+							<OverflowToolbar>
+								<Title text="Lock Object" level="H2"/>
+								<ToolbarSpacer/>
+								<SearchField liveChange="onSearch" width="30%"/>
+								<Button icon="sap-icon://excel-attachment" tooltip="Excel Attachment" press="onDataExport"/>
+							</OverflowToolbar>
+						</headerToolbar>
+						<items>
+							<ColumnListItem type="Active" id="item0">
+								<cells>
+									<Text text="{WoModelLock>Gclient}" id="text0"/>
+									<Text text="{ path: 'WoModelLock>Gtdate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" id="text1"/>
+									<Text text="{WoModelLock>Guname}" id="text2"/>
+									<Text text="{ path: 'WoModelLock>Gttime', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }}" id="text3"/>
+									<Text text="{WoModelLock>Gmode}" id="text4"/>
+									<Text text="{WoModelLock>Gobj}" id="text5"/>
+									<Text text="{WoModelLock>Gtcode}" id="text6"/>
+									<Text text="{WoModelLock>Gtarg}" id="text7"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column id="column0">
+								<header>
+									<Label text="Client" id="label0"/>
+								</header>
+							</Column>
+							<Column id="column5">
+								<header>
+									<Label text="Date" id="label5"/>
+								</header>
+							</Column>
+							<Column id="column1">
+								<header>
+									<Label text="User" id="label1"/>
+								</header>
+							</Column>
+							<Column id="column6">
+								<header>
+									<Label text="Time" id="label6"/>
+								</header>
+							</Column>
+							<Column id="column2">
+								<header>
+									<Label text="Lock Mode" id="label2"/>
+								</header>
+							</Column>
+							<Column id="column3">
+								<header>
+									<Label text="Object" id="label3"/>
+								</header>
+							</Column>
+							<Column id="column4">
+								<header>
+									<Label text="Tcode" id="label4"/>
+								</header>
+							</Column>
+							<Column id="column7">
+								<header>
+									<Label text="Object Text" id="label7"/>
+								</header>
+							</Column>
+						</columns>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

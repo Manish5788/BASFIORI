@@ -1,0 +1,203 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "moni.ZMF_MONITORING_DASHB",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZMF_MONI_DASH_SRV": {
+				"uri": "/sap/opu/odata/sap/ZMF_MONI_DASH_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "moni.ZMF_MONITORING_DASHB.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "moni.ZMF_MONITORING_DASHB.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZMF_MONI_DASH_SRV",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "moni.ZMF_MONITORING_DASHB.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "app",
+					"pattern": "",
+					"target": [
+						"App",
+						"TargetMaster_View"
+					]
+				},
+				{
+					"name": "RouteMaster_View",
+					"pattern": "Master",
+					"target": [
+						"TargetMaster_View"
+					]
+				},
+				{
+					"name": "Details_View",
+					"pattern": "Details_View",
+					"target": [
+						"Details_View"
+					]
+				},
+				{
+					"name": "Workflow_View",
+					"pattern": "Workflow_View",
+					"target": [
+						"Workflow_View"
+					]
+				},
+				{
+					"name": "Idoc_View",
+					"pattern": "Idoc_View",
+					"target": [
+						"Idoc_View"
+					]
+				},
+				{
+					"name": "Dump_View",
+					"pattern": "Dump_View",
+					"target": [
+						"Dump_View"
+					]
+				},
+				{
+					"name": "update_view",
+					"pattern": "update_view",
+					"target": [
+						"update_view"
+					]
+				},
+				{
+					"name": "Lock_View",
+					"pattern": "Lock_View",
+					"target": [
+						"Lock_View"
+					]
+				}
+			],
+			"targets": {
+				"TargetMaster_View": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "Master_View1",
+					"viewName": "Master_View"
+				},
+				"Details_View": {
+					"viewType": "XML",
+					"viewName": "Details_View"
+				},
+				"Workflow_View": {
+					"viewType": "XML",
+					"viewName": "Workflow_View"
+				},
+				"Idoc_View": {
+					"viewType": "XML",
+					"viewName": "Idoc_View"
+				},
+				"Dump_View": {
+					"viewType": "XML",
+					"viewName": "Dump_View"
+				},
+				"update_view": {
+					"viewType": "XML",
+					"viewName": "update_view"
+				},
+				"Lock_View": {
+					"viewType": "XML",
+					"viewName": "Lock_View"
+				},
+				"App": {
+					"viewType": "XML",
+					"viewName": "App"
+				}
+			}
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zmf_moni_dash/webapp",
+		"_version": "1.1.0"
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

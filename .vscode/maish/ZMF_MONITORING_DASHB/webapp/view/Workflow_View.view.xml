@@ -1,0 +1,72 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="moni.ZMF_MONITORING_DASHB.controller.Workflow_View">
+	<App>
+		<pages>
+			<Page title="Workflow" showNavButton="true" navButtonPress="goBack" enableScrolling="true">
+				<content>
+					<Table noDataText="No Data Found" alternateRowColors="true" width="auto" class="sapUiResponsiveMargin" growing="true"
+						items="{ path: 'WoWork>/results', sorter: { path: 'ZCLIENT', aescending: true, group: true } }" id="table0">
+						<headerToolbar>
+							<OverflowToolbar>
+								<Title text="Workflow Details" level="H2"/>
+								<ToolbarSpacer></ToolbarSpacer>
+								<SearchField liveChange="onSearch" width="30%"/>
+								<Button icon="sap-icon://excel-attachment" tooltip="Excel Attachment" press="onDataExport"/>
+							</OverflowToolbar>
+						</headerToolbar>
+						<items>
+							<ColumnListItem type="Active" id="item0">
+								<cells>
+									<Text text="{WoWork>WiId}" id="text0"/>
+									<Text text="{WoWork>WiText}" id="text1"/>
+									<Text text="{WoWork>WiCreator}" id="text6"/>
+									<Text text="{WoWork>WiRhTask}" id="text2"/>
+									<Text text="{path: 'WoWork>WiCd', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium'}}" id="text5"/>
+									<Text text="{path: 'WoWork>WiCt', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium'}}" id="text4"/>
+									<Text text="{WoWork>ZCLIENT}" id="text3"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column id="column0">
+								<header>
+									<Label text="Work Item ID" id="label0"/>
+								</header>
+							</Column>
+							<Column id="column1">
+								<header>
+									<Label text="Work Item Text" id="label1"/>
+								</header>
+							</Column>
+							<Column id="column6">
+								<header>
+									<Label text="Work Item Creator" id="label6"/>
+								</header>
+							</Column>
+							<Column id="column2">
+								<header>
+									<Label text="Task ID" id="label2"/>
+								</header>
+							</Column>
+							<Column id="column3">
+								<header>
+									<Label text="Date" id="label3"/>
+								</header>
+							</Column>
+							<Column id="column5">
+								<header>
+									<Label text="Time" id="label5"/>
+								</header>
+							</Column>
+							<Column id="column4">
+								<header>
+									<Label text="Client" id="label4"/>
+								</header>
+							</Column>
+						</columns>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

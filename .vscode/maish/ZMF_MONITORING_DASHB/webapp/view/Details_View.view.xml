@@ -1,0 +1,66 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="moni.ZMF_MONITORING_DASHB.controller.Details_View">
+	<App>
+		<pages>
+			<Page title="Cancelled Jobs" showNavButton="true" navButtonPress="goBack" enableScrolling="true">
+				<content>
+					<OverflowToolbar class="sapUiResponsiveMargin">
+						<Title text="Job Details" level="H2" id="text01"/>
+						<ToolbarSpacer></ToolbarSpacer>
+						<SearchField liveChange="onSearch" width="30%"/>
+						<Button icon="sap-icon://excel-attachment" tooltip="Excel Attachment" press="onDataExport"/>
+					</OverflowToolbar>
+					<Table noDataText="No Data Found" alternateRowColors="true"
+						items="{ path: 'WoModelJobs>/results', sorter: { path: 'Authckman', aescending: true, group: true } }" id="table0" width="auto"
+						class="sapUiResponsiveMargin" growing="true">
+						<headerToolbar></headerToolbar>
+						<items>
+							<ColumnListItem type="Active" id="item0">
+								<cells>
+									<Text text="{WoModelJobs>Jobname}" id="text0"/>
+									<Text text="{ path: 'WoModelJobs>Sdlstrtdt', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" id="text1"/>
+									<Text text="{ path: 'WoModelJobs>Sdlstrttm', type: 'sap.ui.model.odata.type.Time', formatOptions: {style: 'medium'} }" id="text5"/>
+									<Text text="{WoModelJobs>Authckman}" id="text2"/>
+									<Text text="{WoModelJobs>Progname}" id="text3"/>
+									<Text text="{WoModelJobs>Sdluname}" id="text4"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column id="column0">
+								<header>
+									<Label text="Job Name" id="label0"/>
+								</header>
+							</Column>
+							<Column id="column1">
+								<header>
+									<Label text="Start Date" id="label1"/>
+								</header>
+							</Column>
+							<Column id="column5">
+								<header>
+									<Label text="Start Time" id="label5"/>
+								</header>
+							</Column>
+							<Column id="column2">
+								<header>
+									<Label text="Client" id="label2"/>
+								</header>
+							</Column>
+							<Column id="column3">
+								<header>
+									<Label text="Program" id="label3"/>
+								</header>
+							</Column>
+							<Column id="column4">
+								<header>
+									<Label text="Created By" id="label4"/>
+								</header>
+							</Column>
+						</columns>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,66 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="moni.ZMF_MONITORING_DASHB.controller.Dump_View" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Dump Details" showNavButton="true" navButtonPress="goBack">
+				<content>
+					<OverflowToolbar class="sapUiResponsiveMargin">
+						<Title text="Dumps" level="H2"/>
+						<ToolbarSpacer/>
+						<SearchField liveChange="onSearch" width="30%"/>
+						<Button icon="sap-icon://excel-attachment" tooltip="Excel Attachment" press="onDataExport"/>
+					</OverflowToolbar>
+					<Table noDataText="No Data Found" alternateRowColors="true"
+						items="{ path: 'WoModelDump>/results', sorter: { path: 'Mandt', aescending: true, group: true } }" id="table0" width="auto"
+						class=" sapUiResponsiveMargin" growing="true">
+						<headerToolbar></headerToolbar>
+						<items>
+							<ColumnListItem type="Active" id="item0">
+								<cells>
+									<Text text="{ path: 'WoModelDump>Datum', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }" id="text1"/>
+									<Text text="{WoModelDump>Uname}" id="text2"/>
+									<Text text="{ path: 'WoModelDump>Uzeit', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }}" id="text3"/>
+									<Text text="{WoModelDump>Mandt}" id="text4"/>
+									<Text text="{WoModelDump>prgId}" id="text0"/>
+									<Text text="{WoModelDump>prgName}" id="text5"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column id="column4">
+								<header>
+									<Label text="Date" id="label4"/>
+								</header>
+							</Column>
+							<Column id="column1">
+								<header>
+									<Label text="User" id="label1"/>
+								</header>
+							</Column>
+							<Column id="column2">
+								<header>
+									<Label text="Time" id="label2"/>
+								</header>
+							</Column>
+							<Column id="column3">
+								<header>
+									<Label text="Client" id="label3"/>
+								</header>
+							</Column>
+							<Column id="column0">
+								<header>
+									<Label text="Error Details" id="label0"/>
+								</header>
+							</Column>
+							<Column id="column5">
+								<header>
+									<Label text="Program" id="label5"/>
+								</header>
+							</Column>
+						</columns>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

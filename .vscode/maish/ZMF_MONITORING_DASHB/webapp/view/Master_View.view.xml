@@ -1,0 +1,43 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="moni.ZMF_MONITORING_DASHB.controller.Master_View" displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages busyIndicatorDelay="500" enableBusyIndicator="true">
+				<Page id="page" title="{i18n>title}" backgroundDesign="Transparent">
+					<content>
+						<PullToRefresh id="pullToRefresh" visible="{device>/isTouch}" refresh="handleRefresh"/>
+						<GenericTile id="idTile" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Batch Jobs" subheader="" press="onPress">
+							<TileContent unit="" footer="SM37">
+								<NumericContent id="idNumericContent" value="" withMargin="false"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile id="idTile2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Dumps" subheader="" press="onPressDump">
+							<TileContent unit="" footer="ST22">
+								<NumericContent id="idNumericContentDump" value="" withMargin="false"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile id="idTile3" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Update Error" subheader="" press="onPressUpdt">
+							<TileContent unit="" footer="SM13">
+								<NumericContent id="idNumericContentUpdt" value="" withMargin="false"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile id="idTile4" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Lock Details" subheader="" press="onPressLock">
+							<TileContent unit="" footer="SM12">
+								<NumericContent id="idNumericContentLock" value="" withMargin="false"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile id="idTile0" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Workflow" subheader="" press="onPressWork">
+							<TileContent unit="" footer="SWIA">
+								<NumericContent id="idNumericContentWork" value="" withMargin="false"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile id="idTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="IDOC" subheader="" press="onPressIdoc">
+							<TileContent unit="" footer="WE02">
+								<NumericContent id="idNumericContentIdoc" value="" withMargin="false"/>
+							</TileContent>
+						</GenericTile>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
