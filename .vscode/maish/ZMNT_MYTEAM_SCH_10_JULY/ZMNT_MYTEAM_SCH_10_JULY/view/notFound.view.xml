@@ -1,0 +1,6 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="myteamappmyteamapp.controller.notFound"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<MessagePage id="page" title="No Work Orders Found" text="No Work Orders found. Refine the search" icon="{sap-icon://document}"
+		description="">
+	</MessagePage>
+</mvc:View>

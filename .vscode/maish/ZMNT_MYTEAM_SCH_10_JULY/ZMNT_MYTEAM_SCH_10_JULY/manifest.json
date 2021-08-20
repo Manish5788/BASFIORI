@@ -1,0 +1,193 @@
+{
+    "_version": "1.7.0",
+    "sap.app": {
+        "id": "myteamappmyteamapp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZMNT_MYTEAM_SCHEDULE_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZMNT_MYTEAM_SCHEDULE_SRV/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "myteamappmyteamapp.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {},
+                "sap.ushell": {},
+                "sap.collaboration": {},
+                "sap.ui.comp": {},
+                "sap.uxap": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "myteamapp.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "myteamappmyteamapp.view",
+                "controlId": "idAppControl",
+                "controlAggregation": "detailPages",
+                "bypassed": {
+                    "target": [
+                        "master",
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "master",
+                    "target": [
+                        "object",
+                        "master"
+                    ]
+                },
+                {
+                    "pattern": "Objects/{objectId}",
+                    "name": "object",
+                    "target": [
+                        "master",
+                        "object"
+                    ]
+                },
+                {
+                    "pattern": "WoOperSet/{objectId}/{Activity}/{sPath}",
+                    "name": "operDetail",
+                    "target": [
+                        "operationDetail"
+                    ]
+                },
+                {
+                    "pattern": "WoNotifSet/{objectId}/{NotifNo}/{sPath}",
+                    "name": "notifDetail",
+                    "target": [
+                        "notificationDetail"
+                    ]
+                },
+                {
+                    "pattern": "WoCompSet/{objectId}/{ItemNumber}",
+                    "name": "compDetail",
+                    "target": [
+                        "componentDetail"
+                    ]
+                },
+                {
+                    "pattern": "WoDetailSet('{objectId}')/ToAttachments",
+                    "name": "attach",
+                    "target": [
+                        "attach"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "viewLevel": 1,
+                    "viewId": "master",
+                    "controlAggregation": "masterPages"
+                },
+                "object": {
+                    "viewName": "Detail",
+                    "viewId": "detail",
+                    "viewLevel": 2,
+                    "controlAggregation": "detailPages"
+                },
+                "operationDetail": {
+                    "viewName": "operationDetail",
+                    "viewId": "operDetail",
+                    "viewLevel": 3
+                },
+                "notificationDetail": {
+                    "viewName": "notificationDetail",
+                    "viewId": "notifDetail",
+                    "viewLevel": 4
+                },
+                "componentDetail": {
+                    "viewName": "componentDetail",
+                    "viewId": "compDetail",
+                    "viewLevel": 5
+                },
+                "attach": {
+                    "viewName": "attach",
+                    "viewId": "attach",
+                    "viewLevel": 6
+                },
+                "notFound": {
+                    "viewName": "notFound",
+                    "viewId": "notFound",
+                    "transition": "show"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zmnt_myteam_sch",
+        "_version": "1.1.0"
+    }
+}

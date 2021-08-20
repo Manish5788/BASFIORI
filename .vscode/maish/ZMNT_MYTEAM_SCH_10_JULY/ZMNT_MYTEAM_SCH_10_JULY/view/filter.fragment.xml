@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout">
+	<Dialog id="helloDialog" title="My Team Filters" contentWidth="400px">
+		<VBox class="sapUiSmallMargin">
+			<RadioButtonGroup columns="5" class="sapUiLargeMarginBegin">
+				<buttons>
+					<RadioButton id="RB3-1" text="My Team" tooltip="Displays My Team Operations Details"/>
+					<RadioButton id="RB3-2" text="Work Center" select="onSelect" tooltip="Displays Work Center Operations Details"/>
+				</buttons>
+			</RadioButtonGroup>
+		</VBox>
+		<HBox class="sapUiSmallMargin">
+			<CheckBox id="CHK-1" text="Associated" selected="true" class="sapUiLargeMarginBegin" tooltip="Lists All Relevant Operations as well"/>
+			<CheckBox id="CHK-2" text="Completed " selected="true"  tooltip="Lists All Completed Operation as well"/>
+		</HBox>
+		<u:Calendar id="calendar" select="handleCalendarSelect" class="sapUiLargeMarginBegin sapUiResponsiveMargin "/>
+		<buttons>
+			<Button id="buttonSearch" text="Search" type="Emphasized" press="onPressSearch"/>
+			<Button id="buttonReset" text="Reset" type="Default" press="onResetDialog" tooltip="Reset Search Criteria"/>
+			<Button id="buttonClose" text="Close" type="Default" press="onCloseDialog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

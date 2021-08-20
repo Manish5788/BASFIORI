@@ -1,0 +1,212 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:m="sap.m"
+	xmlns:html="http://www.w3.org/1999/xhtml" controllerName="myteamappmyteamapp.controller.Detail">
+	<App class="sapUiResponsiveMargin" width="auto">
+		<pages>
+			<Page title="Work Order Detail">
+				<content>
+					<ObjectHeader id="oh1" intro=" {WoDetailModel1>/ShortText}" title="{WoDetailModel1>/Orderid}" backgroundDesign="Translucent">
+						<attributes>
+							<ObjectAttribute title="Assembly" text="{WoDetailModel1>/Assembly} {WoDetailModel1&gt;/AssTxt}"/>
+							<ObjectAttribute title="Equipment" text="{WoDetailModel1>/Equipment} {WoDetailModel1&gt;/EquipmentTxt}"/>
+							<ObjectAttribute title="Main Work Center" text="{WoDetailModel1>/MnWkCtr} {WoDetailModel1&gt;/Planplant} {WoDetailModel1>/MnWkctrText}"/>
+						</attributes>
+						<statuses>
+							<!--<ObjectStatus title="Main Work Center" text="{WoDetailModel1>/MnWkCtr} {WoDetailModel1>/Planplant} {WoDetailModel1>/MnWkctrText}"/>-->
+						</statuses>
+					</ObjectHeader>
+					<IconTabBar id="iconTabBar" class="sapUiContentPadding">
+						<items>
+							<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://technical-object" tooltip="Operations">
+								<Table id="lineItemsList" width="auto" updateFinished="onListUpdateFinished" noDataText="No Data"
+									busyIndicatorDelay="{detailView>/lineItemTableDelay}" class="sapUiResponsiveMargin" itemPress="itemPress"
+									items="{WoDetailModel1>/ToOperations/results}">
+									<headerToolbar>
+										<Toolbar id="lineItemsToolbar">
+											<Title id="lineItemsHeader" text="Operation"/>
+										</Toolbar>
+									</headerToolbar>
+									<columns>
+										<Column width="110px" minScreenWidth="Phone" demandPopin="true">
+											<Text text="OpAc"/>
+										</Column>
+										<Column minScreenWidth="Phone" demandPopin="true">
+											<Text text="Work Center"/>
+										</Column>
+										<Column minScreenWidth="Phone" demandPopin="true">
+											<Text text="Start Constraint"/>
+										</Column>
+										<Column>
+											<Text text="Status"/>
+										</Column>
+										<Column id="color" minScreenWidth="Phone" demandPopin="true">
+											<core:Icon src="sap-icon://legend" class="size2" tooltip="Status Indicator" width="50px" size="30px">
+												<core:layoutData>
+													<FlexItemData growFactor="1"/>
+												</core:layoutData>
+											</core:Icon>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem type="Active">
+											<cells>
+												<ObjectIdentifier title="{WoDetailModel1>Activity}" text="{WoDetailModel1>Description}" tooltip="{WoDetailModel1>Description}"/>
+												<ObjectIdentifier title="{WoDetailModel1>WorkCntr}" text="{WoDetailModel1>WkctrText}" tooltip="{WoDetailModel1>WkctrText}"/>
+												<!--<Text-->
+												<!--text="{= ${WoDetailModel1>StartCons} !== null ? ${ path: 'WoDetailModel1>StartCons', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }} \n { path: 'WoDetailModel1>StrtTimCon', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }} : 'bye' }"/>-->
+												<!--<Text-->
+												<!--text="{ path: 'WoDetailModel1>StartCons', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }} \n { path: 'WoDetailModel1>StrtTimCon', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }}"/>-->
+												<Text
+													text="{ path: 'WoDetailModel1>StartCons', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }} \n {= ${WoDetailModel1>StartCons} !== null ? ${ path: 'WoDetailModel1>StrtTimCon', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }} : ' ' }"/>
+												<Text text="{WoDetailModel1>SystemStatusText}"/>
+												<core:Icon id="icon" src="sap-icon://border" width="50px" height="30px" size="0.0px"
+													tooltip="{ parts: [ 'WoDetailModel1>Stat','WoDetailModel1&gt;Ombl' ], formatter: '.formatter.formatTooltip' }">
+													<core:layoutData>
+														<FlexItemData growFactor="1"/>
+													</core:layoutData>
+												</core:Icon>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+							<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://notification" tooltip="Notifications">
+								<Table id="lineItemsList1" width="auto" items="{WoDetailModel1>/ToNotifications/results}" noDataText="No Data"
+									busyIndicatorDelay="{detailView>/lineItemTableDelay}" class="sapUiResponsiveMargin" itemPress="itemNotiPress">
+									<headerToolbar>
+										<Toolbar id="lineItemsToolbar1">
+											<Title id="lineItemsHeader1" text="Notifications"/>
+											<ToolbarSpacer/>
+											<SearchField id="search" liveChange="onSearchEquip" width="35%" tooltip="Search Equipment Description"
+												placeholder="Search Equipment Description"/>
+										</Toolbar>
+									</headerToolbar>
+									<columns>
+										<Column>
+											<Text text="Notification No"/>
+										</Column>
+										<Column>
+											<Text text="Status"/>
+										</Column>
+										<Column>
+											<Text text="Functional Location"/>
+										</Column>
+										<Column>
+											<Text text="Equipment"/>
+										</Column>
+										<Column>
+											<Text text="Required End"/>
+										</Column>
+										<Column minScreenWidth="Phone" demandPopin="true">
+											<Text text="Priority"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem type="Active">
+											<cells>
+												<ObjectIdentifier title="{WoDetailModel1>NotifNo}" text="{WoDetailModel1>ShortText}" tooltip="{WoDetailModel1>ShortText}"/>
+												<Text text="{WoDetailModel1>SysStatus}"/>
+												<ObjectIdentifier title="{WoDetailModel1>FunctLoc}" text="{WoDetailModel1>Funcldescr}" tooltip="{WoDetailModel1>Funcldescr}"/>
+												<Text text="{WoDetailModel1>Equidescr}" tooltip="{WoDetailModel1>Equidescr}"/>
+												<!--<Text-->
+												<!--text="{ path: 'WoDetailModel1>Desenddate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } } \n { path: 'WoDetailModel1>Desendtm', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }}"/>-->
+												<Text
+													text="{ path: 'WoDetailModel1>Desenddate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }} \n {= ${WoDetailModel1>Desenddate} !== null ? ${ path: 'WoDetailModel1>Desendtm', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }} : ' ' }"/>
+												<Text text="{WoDetailModel1>Priotxt}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+							<IconTabFilter id="iconTabBarFilter3" icon="sap-icon://shelf" tooltip="Components">
+								<Table id="lineItemsList2" width="auto" items="{WoDetailModel1>/ToComponents/results}" updateFinished="onListUpdateFinished"
+									noDataText="No Data" busyIndicatorDelay="{detailView>/lineItemTableDelay}" class="sapUiResponsiveMargin">
+									<headerToolbar>
+										<Toolbar id="lineItemsToolbar2">
+											<Title id="lineItemsHeader2" text="Components"/>
+										</Toolbar>
+									</headerToolbar>
+									<columns>
+										<Column>
+											<Text text="Item#-Material"/>
+										</Column>
+										<Column>
+											<Text text="Req.Date"/>
+										</Column>
+										<Column>
+											<Text text="Plant"/>
+										</Column>
+										<Column>
+											<Text text="Unloading Pt."/>
+										</Column>
+										<Column>
+											<Text text="Withdrawal Qty"/>
+										</Column>
+										<Column minScreenWidth="Phone" demandPopin="true">
+											<Text text="Req.Qty"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem type="Active">
+											<cells>
+												<ObjectIdentifier title="{WoDetailModel1>ItemNumber}-{WoDetailModel1&gt;Material}" text="{WoDetailModel1>MatlDesc}"
+													tooltip="{WoDetailModel1>MatlDesc}"/>
+												<!--<Text-->
+												<!--text="{ path: 'WoDetailModel1>ReqDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } } \n { path: 'WoDetailModel1>ReqTime', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }}"/>-->
+												<Text
+													text="{ path: 'WoDetailModel1>ReqDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }} \n {= ${WoDetailModel1>ReqDate} !== null ? ${ path: 'WoDetailModel1>ReqTime', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }} : ' ' }"/>
+												<Text text="{WoDetailModel1>Plant}-{WoDetailModel1&gt;PlantTxt}" tooltip="{WoDetailModel1>PlantTxt}"/>
+												<Text text="{WoDetailModel1>UnloadPt}" tooltip="{WoDetailModel1>UnloadPt}"/>
+												<Text text="{WoDetailModel1>WithdQuan}"/>
+												<ObjectNumber number="{WoDetailModel1>RequirementQuantity}" unit="{WoDetailModel1>RequirementQuantityUnit}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+							<IconTabFilter id="iconTabBarFilter4" icon="sap-icon://attachment" tooltip="Attachments">
+								<Table id="lineItemsList3" width="auto" items="{WoDetailModel1>/ToAttachments/results}" updateFinished="onListUpdateFinished"
+									noDataText="No Data" busyIndicatorDelay="{detailView>/lineItemTableDelay}" class="sapUiResponsiveMargin" itemPress="attchPress">
+									<headerToolbar>
+										<Toolbar id="lineItemsToolbar3">
+											<Title id="lineItemsHeader3" text=" List Attachment"/>
+										</Toolbar>
+									</headerToolbar>
+									<columns>
+										<Column>
+											<Text text="Filename"/>
+										</Column>
+										<Column>
+											<Text text="Description"/>
+										</Column>
+										<Column>
+											<Text text="Creator"/>
+										</Column>
+										<Column>
+											<Text text="Creation Date"/>
+										</Column>
+										<Column minScreenWidth="Phone" demandPopin="true">
+											<Text text="Type"/>
+										</Column>
+									</columns>
+									<items>
+										<!--OriginalUrl-->
+										<ColumnListItem type="Active">
+											<cells>
+												<ObjectIdentifier title="{WoDetailModel1>Filename}" text=""/>
+												<Link text="{WoDetailModel1>FileDesc}" target="_blank" href="{WoDetailModel1>OriginalUrl}" emphasized="true"
+													tooltip="{WoDetailModel1>FileDesc}"/>
+												<Text text="{WoDetailModel1>Creator}"/>
+												<Text text="{ path: 'WoDetailModel1>CreatedDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'long' } } "/>
+												<Text text="{WoDetailModel1>MimeType}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

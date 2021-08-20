@@ -1,0 +1,34 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="myteamappmyteamapp.controller.Master">
+	<App>
+		<pages>
+			<Page title="Work Orders">
+				<content>
+					<SearchField width="100%" placeholder="Search by Work Order number" id="__field0" liveChange="onSearch" search="onRefresh" showRefreshButton="true" refreshButtonTooltip="Refresh" maxLength="16" tooltip="Enter an Order number/Short Text or a part of it"/>
+					<Toolbar active="true" id="filterBar" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings" class="addStyle">
+						<Title id="filterBarLabel" text="Filtered By " tooltip="Filtered By Must Start Date" class="addStyle1"/>
+						<ToolbarSpacer/>
+						<Button type="Transparent" press="onPressBac" class="addBtnStyle" icon="sap-icon://nav-back" tooltip="Backward"/>
+						<Text text="01/11/2018" id="__text0" class="addStyle1"/>
+						<Button press="onPressFor" type="Transparent" class="addBtnStyle" icon="sap-icon://feeder-arrow" tooltip="Forward"/>
+						<Button press="onOpenDialog" icon="sap-icon://filter" class="addBtnStyle" tooltip="Filter Options"/>
+					</Toolbar>
+					<List noDataText="No Work Orders Found" id="__list1" mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" busyIndicatorDelay="{WoDetailModel>/delay}" items="{WoDetailModel>/results}" updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+						<items>
+							<!--{WoDetailModel>EquipmentTxt}-->
+							<ObjectListItem type="Active" title="{WoDetailModel>Orderid} - {WoDetailModel>Activity}" number="" numberUnit="" intro="{WoDetailModel>ShortText}" id="__item7" press="onSelectionChange">
+								<firstStatus>
+									<!--<ObjectStatus text="{WoDetailModel>EquipmentTxt}"/>-->
+								</firstStatus>
+								<secondStatus/>
+								<attributes>
+									<ObjectAttribute text="{WoDetailModel>EquipmentTxt}"/>
+									<ObjectAttribute text="{WoDetailModel>OprShortText}"/>
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

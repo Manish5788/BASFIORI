@@ -1,0 +1,84 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns="sap.m"
+	controllerName="myteamappmyteamapp.controller.componentDetail" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Component Detail" showNavButton="true" navButtonPress="onNav">
+				<content>
+					<VBox class="sapUiSmallMargin">
+						<ObjectHeader title="{Material}" number="Req.Qty {RequirementQuantity}" numberUnit="{RequirementQuantityUnit}" intro="{MatlDesc}"
+							introActive="true" titleActive="true" id="__header0" backgroundDesign="Translucent">
+							<attributes>
+								<ObjectAttribute title="Item Number" text="{ItemNumber}"/>
+								<ObjectAttribute title="Activity" text="{Activity}"/>
+							</attributes>
+						</ObjectHeader>
+						<f:Form id="FormDisplay480_12120Dual" editable="false">
+							<f:title>
+								<core:Title text="Details"/>
+							</f:title>
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+									emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer title="General">
+									<f:formElements>
+										<f:FormElement label="Reservation No/Item">
+											<f:fields>
+												<Text text="{ReservNo}-{ResItem}" id="nameText"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Plant ">
+											<f:fields>
+												<Text text="{Plant}-{PlantTxt}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Storage Location ">
+											<f:fields>
+												<Text text="{StgeLoc}-{StgeLocTxt}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Unloading Point">
+											<f:fields>
+												<Text text="{UnloadPt}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Purchase Group ">
+											<f:fields>
+												<Text text="{PurGroup}"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+								<f:FormContainer title=" ">
+									<f:formElements>
+										<f:FormElement label="Batch">
+											<f:fields>
+												<Text text="{Batch}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Item Category">
+											<f:fields>
+												<Text text="{ItemCat}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Movement Type ">
+											<f:fields>
+												<Text text="{MoveType}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Commited Quantity ">
+											<f:fields>
+												<Text text="{CommitedQuan} {OriginalUom}"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</VBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,12 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="myteamappmyteamapp.controller.attach" height="100%">
+	<App >
+		<pages page="{ToAttachments}">
+			<Page title="Attachment Viewer" showNavButton="true" navButtonPress="onNav">
+				<content>
+					<PDFViewer title="{Filename}" source="{Url}"></PDFViewer>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

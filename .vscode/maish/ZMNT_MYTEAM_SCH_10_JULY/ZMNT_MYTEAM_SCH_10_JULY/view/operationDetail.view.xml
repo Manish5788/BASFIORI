@@ -1,0 +1,79 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	controllerName="myteamappmyteamapp.controller.operationDetail" xmlns:forms="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Operation Detail" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<ObjectHeader title="OpAc:{WoOperModel>Activity}" intro="{WoOperModel>Description}" id="__header0" backgroundDesign="Translucent">
+						<attributes>
+							<ObjectAttribute title="Order" text="{WoOperModel>Orderid}"/>
+							<ObjectAttribute title="Control Key" text="{WoOperModel>ControlKey}"/>
+						</attributes>
+					</ObjectHeader>
+					<VBox class="sapUiSmallMargin">
+						<f:Form id="FormDisplay480_12120Dual" editable="false">
+							<f:title>
+								<core:Title text="{i18n>Details}"/>
+							</f:title>
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+									emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer title="General">
+									<f:formElements>
+										<f:FormElement label="Functional Location">
+											<f:fields>
+												<Text text="{WoOperModel>FunctLoc} {WoOperModel>FunctLocTxt}" id="nameText"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Unloading Point">
+											<f:fields>
+												<Text text="{WoOperModel>UnloadPt}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Number">
+											<f:fields>
+												<Text text="{WoOperModel>NumberOfCapacities}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Duration">
+											<f:fields>
+												<Text text="{WoOperModel>DurationNormal} {WoOperModel>DurationNormalUnit}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Plant">
+											<f:fields>
+												<Text text="{WoOperModel>Plant} {WoOperModel>PlantText}" id="countryText"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+								<f:FormContainer title="Date">
+									<f:formElements>
+										<f:FormElement label="Start Constraint date">
+											<f:fields>
+												<!--<Text-->
+												<!--text="{ path: 'WoOperModel>StartCons', type: 'sap.ui.model.type.Date', formatOptions: { style: 'full' } } \n { path: 'WoOperModel>StrtTimCon', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }}"/>-->
+												<Text
+													text="{ path: 'WoOperModel>StartCons', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }} \n {= ${WoOperModel>StartCons} !== null ? ${ path: 'WoOperModel>StrtTimCon', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }} : ' ' }"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Finish Constraint Date">
+											<f:fields>
+												<!--<Text-->
+												<!--text="{ path: 'WoOperModel>FinConStr', type: 'sap.ui.model.type.Date', formatOptions: { style: 'full' } } \n { path: 'WoOperModel>FinTimCons', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }}"/>-->
+												<Text
+													text="{ path: 'WoOperModel>FinConStr', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }} \n {= ${WoOperModel>FinConStr} !== null ? ${ path: 'WoOperModel>FinTimCons', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }} : ' ' }"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</VBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

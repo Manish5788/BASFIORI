@@ -1,0 +1,240 @@
+/* Enter your custom styles here */
+
+
+/* Remove the blue line on top of the app */
+
+
+/*-----------------------------------------------*/
+
+.sapMPageHeader::before {
+    border-top: 0rem !important;
+}
+
+.sapMShellBrandingBar {
+    height: 0px !important;
+}
+
+.sapMSplitContainerMaster:before {
+    height: 0rem !important;
+}
+
+
+/*.sapMBtnInner {*/
+
+
+/*    vertical-align: top;*/
+
+
+/*    display: block;*/
+
+
+/*    margin-top: 0.1px;*/
+
+
+/*    margin-right: 0px;*/
+
+
+/*    margin-bottom: 0px;*/
+
+
+/*    margin-left: 0px;*/
+
+
+/*    border-color: transparent;*/
+
+
+/*    background-clip: padding-box;*/
+
+
+/*    box-sizing: border-box;*/
+
+
+/*    font-family: Arial;*/
+
+
+/*    font-size: 0.875rem;*/
+
+
+/*    height: 2.0rem;*/
+
+
+/*    text-align: center;*/
+
+
+/*    text-decoration: none;*/
+
+
+/*    min-width: 2.0rem;*/
+
+
+/*    padding: 0;*/
+
+
+/*    background-color: #f7f7f7;*/
+
+
+/*    border: 0.5px solid #ababab;*/
+
+
+/*    border-radius: 0.2rem;*/
+
+
+/*    color: #346187;*/
+
+
+/*    text-shadow: 0 0 0.125rem #ffffff;*/
+
+
+/*}*/
+
+
+/* Remove the gap in the General Information Form */
+
+
+/*-----------------------------------------------*/
+
+.sapUiSizeCompact .sapUiFormContainerTitle>.sapUiFormTitle {
+    height: 0rem !important;
+    line-height: 2rem;
+}
+
+.sapMRbB .sapMRbBInn {
+    height: 0.5rem;
+    width: 0.5rem;
+    padding: 2px;
+    border-radius: 1rem;
+    margin: 0.1875rem;
+}
+
+
+/* Set Text to Bold */
+
+
+/*-----------------------------------------------*/
+
+
+/*.sapUiRbG span:nth-child(2) {*/
+
+
+/*    color: #FFFFFF*/
+
+
+/*}*/
+
+.sapMRbG > .sapMRb,
+.sapMRbGCol > .sapMRb {
+    float: none;
+    clear: left;
+    text-overflow: ellipsis;
+}
+
+.AusNetboldText {
+    font-weight: bold !important;
+}
+
+.highlightStyle {
+    background-color: #8C8986 !important;
+}
+
+.highlightStyle1 {
+    background-color: #6CD46F !important;
+}
+
+.highlightStyle2 {
+    background-color: #616CEC !important;
+}
+
+.highlightStyle3 {
+    background-color: #FFC300 !important;
+}
+
+.highlightStyle4 {
+    background-color: #424949 !important;
+}
+
+.highlightStyle5 {
+    background-color: #CD6155 !important;
+}
+
+.addStyle {
+    /*background-color: #15462A !important;*/
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    /*color: #346187;*/
+    text-shadow: none;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border-bottom: none;
+    height: 2rem;
+    background: #168282;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 0.875rem;
+    line-height: normal;
+}
+
+.addStyle1 {
+    display: inline-block;
+    box-sizing: border-box;
+    white-space: pre-line;
+    /*word-wrap: break-word;*/
+    cursor: text;
+    font-size: 0.699rem;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: normal;
+    color: #fafafa;
+}
+
+.sapMBtnIcon {
+    font-size: 1.175rem;
+    line-height: 1.897rem;
+    width: 1.375rem;
+    text-align: center;
+    /*margin: 0;*/
+    /*padding: 0;*/
+    vertical-align: top;
+    max-height: 1.475rem;
+    /*color: #346187;*/
+}
+
+.addBtnStyle {
+    vertical-align: top;
+    display: block;
+    margin-top: 0.1px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    border-color: transparent;
+    background-clip: padding-box;
+    box-sizing: border-box;
+    font-family: Arial;
+    font-size: 0.875rem;
+    height: 2.0rem;
+    text-align: center;
+    text-decoration: none;
+    min-width: 2.0rem;
+    padding: 0;
+    background-color: #f7f7f7;
+    border: 0.5px solid #ababab;
+    border-radius: 0.2rem;
+    color: #346187;
+    text-shadow: 0 0 0.125rem #ffffff;
+    line-height: 2.897rem;
+}
+
+.newClass {
+    /*border: 1px solid black;*/
+    /*margin-top: 10px;*/
+    /*margin-bottom: 100px;*/
+    /*margin-right: 50px;*/
+    margin-left: 50px;
+    /*background-color: lightblue;*/
+}
+
+
+

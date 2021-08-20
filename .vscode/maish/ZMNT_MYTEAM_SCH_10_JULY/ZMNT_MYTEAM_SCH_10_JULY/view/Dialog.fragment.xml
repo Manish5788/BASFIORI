@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ViewSettingsDialog confirm="handleConfirm">
+		<filterItems>
+			<ViewSettingsFilterItem text="Equipment Description" key="Equidescr" multiSelect="false">
+				<items items="{Equidescr}">
+					<ViewSettingsItem text="Crossarm Equipment" key="Equidescr"/>
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

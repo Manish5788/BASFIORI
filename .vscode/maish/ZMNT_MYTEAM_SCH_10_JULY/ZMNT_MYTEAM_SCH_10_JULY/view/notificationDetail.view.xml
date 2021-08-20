@@ -1,0 +1,106 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	controllerName="myteamappmyteamapp.controller.notificationDetail" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Notification Detail" showNavButton="true" navButtonPress="goNav">
+				<content>
+					<ObjectHeader title="{WoNotifModel>NotifNo}" number="Func Loc: {WoNotifModel>FunctLoc}" numberUnit="{WoNotifModel>Funcldescr}"
+						intro="{WoNotifModel>ShortText}" id="__header0" backgroundDesign="Translucent">
+						<attributes>
+							<ObjectAttribute title="Notification Type" text="{WoNotifModel>NotifType}"/>
+							<ObjectAttribute title="System Status" text="{WoNotifModel>SysStatus}"/>
+						</attributes>
+					</ObjectHeader>
+					<VBox class="sapUiSmallMargin">
+						<f:Form id="FormDisplay480_12120Dual" editable="false">
+							<f:title>
+								<core:Title text="Details"/>
+							</f:title>
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+									emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer title="General">
+									<f:formElements>
+										<f:FormElement label="Priority">
+											<f:fields>
+												<Text text="{WoNotifModel>Priotxt}" id="nameText"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Equipment">
+											<f:fields>
+												<Text text="{WoNotifModel>Equipment} {WoNotifModel>Equidescr}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Assembly ">
+											<f:fields>
+												<Text text="{WoNotifModel>Assembly} {WoNotifModel>Descriptn}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Required Start">
+											<f:fields>
+												<!--<Text-->
+												<!--text="{ path: 'WoNotifModel>Desstdate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'full' } } \n { path: 'WoNotifModel>Dessttime', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }}"/>-->
+												<Text
+													text="{ path: 'WoNotifModel>Desstdate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }} \n {= ${WoNotifModel>Desstdate} !== null ? ${ path: 'WoNotifModel>Dessttime', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }} : ' ' }"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+								<f:FormContainer title="Damage">
+									<f:formElements>
+										<f:FormElement label="Event">
+											<f:fields>
+												<Text text="{WoNotifModel>CodeGroup} {WoNotifModel>Coding} {WoNotifModel>CodeText}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Damage">
+											<f:fields>
+												<Text text="{WoNotifModel>DCodegrp} {WoNotifModel>DCode} {WoNotifModel>TxtProbcd}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="Cause">
+											<f:fields>
+												<Text text="{WoNotifModel>CauseCodegrp} {WoNotifModel>CauseCode} {WoNotifModel>TxtCausecd}"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+						<Panel expandable="true" expanded="false" headerText="Notification Activity" width="auto" class="sapUiResponsiveMargin">
+							<content>
+								<List noDataText="No Activity Found" id="__list1" items="{WoNotifActModel>/results}">
+									<items>
+										<ObjectListItem type="Active" title="{WoNotifActModel>ActKey} {WoNotifActModel>NotifNo}" number=" " numberUnit="{WoNotifActModel>Acttext}"
+											intro="{WoNotifActModel>ActCode} {WoNotifActModel>TxtActcd}" id="__item7">
+											<firstStatus></firstStatus>
+											<secondStatus></secondStatus>
+											<attributes>
+												<ObjectAttribute text="Created By : {WoNotifActModel>TxtActgrp}"/>
+												<!--<ObjectAttribute-->
+												<!--text="{ path: 'WoNotifActModel>CreatedDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'full' } } \n { path: 'WoNotifActModel>CreatedTime', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }}"/>-->
+												<ObjectAttribute
+													text="{ path: 'WoNotifActModel>CreatedDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }} \n {= ${WoNotifActModel>CreatedDate} !== null ? ${ path: 'WoNotifActModel>CreatedTime', type: 'sap.ui.model.odata.type.Time', formatOptions: { style: 'medium' }} : ' ' }"/>
+											</attributes>
+										</ObjectListItem>
+									</items>
+								</List>
+							</content>
+						</Panel>
+						<Panel expandable="true" expanded="false" headerText="Notification Long Texts" width="auto" class="sapUiResponsiveMargin">
+							<content>
+								<List noDataText="No Long Texts" id="__list2" items="{WoNotifLongModel>/results}">
+									<items>
+										<ObjectListItem type="Active" title="{WoNotifLongModel>AuthorName} {WoNotifLongModel>NotifNo}" intro="{WoNotifLongModel>Text}" id="__item8"></ObjectListItem>
+									</items>
+								</List>
+							</content>
+						</Panel>
+					</VBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
