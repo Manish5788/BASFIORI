@@ -1,0 +1,12 @@
+<mvc:View controllerName="first.projectfirst.controller.ViewFirst"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Image id='image1' src="{/testt.png}" width="150px" height="150px"/>
+            <MessageStrip id="mVBt187n" text="Default (Information) with default icon and close button:" showIcon="true" showCloseButton="true" class="sapUiMediumMarginBottom">
+            </MessageStrip>
+            <Button id="mVBtn" text="Messages" class="sapUiLargeMarginTop sapUiSmallMarginBegin" press="handlePopoverPress"/>
+        </content>
+    </Page>
+</mvc:View>

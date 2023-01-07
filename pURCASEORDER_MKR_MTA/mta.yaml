@@ -1,0 +1,93 @@
+_schema-version: "3.2"
+ID: pURCASEORDER_MKR_MTA
+description: MANAGE PO MANISH
+version: 0.0.1
+modules:
+- name: pURCASEORDER_MKR_MTA-dest-content
+  type: com.sap.application.content
+  requires:
+  - name: pURCASEORDER_MKR_MTA-destination-service
+    parameters:
+      content-target: true
+  - name: pURCASEORDER_MKR_MTA-repo-host
+    parameters:
+      service-key:
+        name: pURCASEORDER_MKR_MTA-repo-host-key
+  - name: pURCASEORDER_MKR_MTA-uaa
+    parameters:
+      service-key:
+        name: pURCASEORDER_MKR_MTA-uaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: pURCASEORDER_MKR_MTA_repo_host
+          ServiceInstanceName: pURCASEORDER_MKR_MTA-html5-srv
+          ServiceKeyName: pURCASEORDER_MKR_MTA-repo-host-key
+          sap.cloud.service: pURCASEORDER_MKR_MTA
+        - Authentication: OAuth2UserTokenExchange
+          Name: pURCASEORDER_MKR_MTA_uaa
+          ServiceInstanceName: pURCASEORDER_MKR_MTA-xsuaa-srv
+          ServiceKeyName: pURCASEORDER_MKR_MTA-uaa-key
+          sap.cloud.service: pURCASEORDER_MKR_MTA
+        existing_destinations_policy: update
+  build-parameters:
+    no-source: true
+- name: pURCASEORDER_MKR_MTA-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: pURCASEORDER_MKR_MTA-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - managepov1managepov1.zip
+      name: managepov1managepov1
+      target-path: resources/
+- name: managepov1managepov1
+  type: html5
+  path: managepo_v1
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: pURCASEORDER_MKR_MTA-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: pURCASEORDER_MKR_MTA-xsuaa-srv
+    service-plan: application
+- name: pURCASEORDER_MKR_MTA-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: pURCASEORDER_MKR_MTA-destination-service
+    service-plan: lite
+- name: pURCASEORDER_MKR_MTA-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: pURCASEORDER_MKR_MTA-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
