@@ -1,0 +1,71 @@
+managed implementation in class zbp_i_pohedermktp unique;
+strict ( 2 );
+
+define behavior for ZI_POHEDERMKTP alias PurchaseOrder
+persistent table ZPOHEADER_DBMKR
+lock master
+early numbering
+authorization master ( instance )
+etag master ChangedDateTime
+{
+ field (readonly) PurchaseOrderNumber;
+  create;
+  update;
+  delete;
+  association _POitems { create; }
+
+  mapping for zpoheader_dbmkr
+
+  {
+
+    PurchaseOrderNumber = po_order;
+    PODesc = po_desc ;
+    POType =   po_type;
+    CompanyCode =  comp_code ;
+    POOrg =   po_org;
+    PoStatu =   po_status  ;
+    Supplier =   supplier;
+    Imageurl =   imageurl;
+    CreateBy =   create_by;
+    CreatedDateTime =   created_date_time;
+    ChangedDateTime =   changed_date_time;
+    LocalLastChangedBy =   local_last_changed_by;
+
+  }
+
+
+}
+
+define behavior for ZI_PO_ITEMSMKRtTP //alias <alias_name>
+implementation in class zbp_i_poitemmktp unique
+persistent table ZPOITEMS_DBMKR
+early numbering
+lock dependent by _PurchaseHeader
+authorization dependent by _PurchaseHeader
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) PoOrder;
+  association _PurchaseHeader;
+
+  mapping for zpoitems_dbmkr
+  {
+
+    PoOrder = po_order;
+    PoItem = po_item;
+    ProductPrice = product_price;
+    Material = material;
+    MatGroup = mat_group;
+    PriceUnit = price_unit;
+    ShortText = short_text;
+    OrderQunt = order_qunt;
+    OrderUnit = order_unit;
+    Plant = plant;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+
+
+  }
+
+}

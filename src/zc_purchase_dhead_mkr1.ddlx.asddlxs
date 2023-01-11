@@ -1,0 +1,153 @@
+@Metadata.layer: #CORE
+@UI.headerInfo:{ 
+imageUrl: 'Imageurl',
+typeName: 'Purchase Order',
+typeNamePlural: 'Purchase Orders',
+title:{ value: 'PODesc' },
+description:{ 
+
+label:'Manage Purchase order',
+type: #STANDARD,
+value:'POType'
+}
+
+}
+annotate entity ZC_PURCHASE_DHEAD_MKR
+    with 
+{
+
+@UI.facet: [{
+
+id:'Collection',
+purpose:#STANDARD,
+type:#COLLECTION,
+label:'General Information'
+
+},
+
+{  
+
+id:'BasicInfo',
+purpose:#STANDARD,
+parentId:'Collection',
+position:10,
+targetQualifier:'BasicGroup',
+type:#FIELDGROUP_REFERENCE,
+label:'Basic Data'
+
+ },
+ {  
+
+id:'OrgInfo',
+purpose:#STANDARD,
+parentId:'Collection',
+position:20,
+targetQualifier:'OrgGroup',
+type:#FIELDGROUP_REFERENCE,
+label:'Org Data'
+
+ },
+  {  
+
+id:'ItemInfo',
+purpose:#STANDARD,
+position:20,
+type:#LINEITEM_REFERENCE,
+targetElement: '_Items',
+label:'Line Item Details'
+
+ },
+ 
+ { 
+ 
+ id:'Header1',
+ purpose:#HEADER,
+ type:#DATAPOINT_REFERENCE,
+ targetQualifier: 'OrderDate',
+ position: 20
+ 
+ },
+  { 
+ 
+ id:'Header2',
+ purpose:#HEADER,
+ type:#DATAPOINT_REFERENCE,
+ targetQualifier: 'AppStat',
+ position: 30
+ 
+ },
+   { 
+ 
+ id:'Header3',
+ purpose:#HEADER,
+ type:#DATAPOINT_REFERENCE,
+ targetQualifier: 'SuppData',
+ position: 40
+ 
+ },
+ 
+ {
+
+id:'Collection1',
+purpose:#STANDARD,
+type:#COLLECTION,
+label:'Other Information'
+
+},
+{  
+
+id:'WhattaInfo',
+purpose:#STANDARD,
+parentId:'Collection1',
+position:10,
+targetQualifier:'WhatGroup',
+type:#FIELDGROUP_REFERENCE,
+label:'Data Data'
+
+ }
+ 
+ 
+ ]
+    @UI.lineItem: [{ position: 10 ,label: 'Purchase Order', importance: #HIGH}]
+    @UI.selectionField: [{position: 10 }]
+    @UI.fieldGroup: [{position: 10 , label:'Purchase Order', qualifier: 'BasicGroup'}]
+    PurchaseOrderNumber;
+     @UI.lineItem: [{ position: 20 ,label: 'Description' }]
+    PODesc;
+    //PurchaseTotalPrice;
+     @UI.lineItem: [{ position: 30 ,label: 'Unit' ,importance: #HIGH}]
+     @UI.fieldGroup: [{position: 20 , label:'Purchase Order Unit', qualifier: 'BasicGroup'}]
+    PriceUnit;
+    @UI.fieldGroup: [{position: 30 , label:'Total Price', qualifier: 'BasicGroup'}]
+    PurchaseTotalPrice;
+     @UI.lineItem: [{ position: 40 ,label: 'Purchase Type',importance: #HIGH }]
+     @UI.selectionField: [{position: 20 }]
+    POType;
+     @UI.lineItem: [{ position: 50 ,label: 'Company Code',importance: #HIGH }]
+     @UI.fieldGroup: [{position: 10 , label:'Company code', qualifier: 'WhatGroup'}]
+    CompanyCode;
+     @UI.lineItem: [{ position: 60 ,label: 'Purchase Org',importance: #HIGH }]
+     @UI.fieldGroup: [{position: 10 , label:'Organisation', qualifier: 'OrgGroup'}]
+    POOrg;
+     @UI.lineItem: [{ position: 70 ,label: 'Supplier',importance: #HIGH ,type: #AS_CONTACT,value: '_Supplier' }]
+     @UI.selectionField: [{position: 30 }]
+     @UI.fieldGroup: [{position: 20 , label:'Supplier', qualifier: 'OrgGroup'}]
+     @UI.dataPoint:{ title: 'Supplier',qualifier: 'SuppData' }
+    Supplier;
+    @UI.selectionField: [{ position: 40 }]
+    @UI.lineItem: [{ position: 80 , label: 'Purchase Status', criticality: 'CriticalityValue', importance: #HIGH }]
+    @UI.dataPoint:{ title: 'Approval Status',criticality: 'CriticalityValue',qualifier: 'AppStat' }
+    PoStatu;
+  //   @UI.lineItem: [{ position: 10 ,label: 'Purchase Order' }]
+//    Imageurl;
+//    CreateBy;
+    @UI.dataPoint:{ title: 'Creation date',qualifier: 'OrderDate' }
+    CreatedDateTime;
+//    ChangedDateTime;
+//    LocalLastChangedBy;
+//    /* Associations */
+//    _OrderType;
+//    _PurchaseItems;
+//    _Supplier_Info;element_name;
+//    
+}

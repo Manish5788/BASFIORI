@@ -1,0 +1,19 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_POHEDERMKTP alias PurchaseOrder
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _POitems { create; }
+}
+
+define behavior for ZC_PO_ITEMSMKRTTP alias PurchaseItems
+{
+  use update;
+  use delete;
+
+  use association _PurchaseHeader;
+}

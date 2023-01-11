@@ -1,0 +1,8 @@
+@EndUserText.label: 'SERVICE FOR PO'
+define service ZPURCHASEOrders_SD_MKR {
+  expose ZC_PURCHASE_DHEAD_MKR as PurchaseOrders;
+  expose ZC_PURCHASE_DITEM_MKR as PurchaseItems;
+  expose ZC_PO_STATUSMKR as PurchaseStatus;
+  expose ZC_PO_TYPEMKR as PurchaseType;
+  expose ZC_SUPPLIER_DBMKR as PurchaseSupplier;
+}

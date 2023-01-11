@@ -1,0 +1,8 @@
+@EndUserText.label: 'Manage PO'
+define service ZMANISH_MANAGE_PO_V1 {
+  expose ZC_POHEDERMKTP;
+  expose ZC_PO_ITEMSMKRTTP;
+  expose ZC_SUPPLIER_DBMKR;
+  expose ZC_PO_STATUSMKR;
+  expose ZC_PO_TYPEMKR;
+}
